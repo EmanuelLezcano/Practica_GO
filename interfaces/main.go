@@ -29,8 +29,13 @@ func (p Person) Greet() {
 }
 
 //Implentation Byer interface for Person
-func (p Person) Byer() {
+func (p Person) Bye() {
 	fmt.Printf("\nBye, my name is %s", p.Name)
+}
+
+//Metodo de la interface Stringer() de GO
+func (p Person) String() string {
+	return "\nBye, my name is: " + p.Name
 }
 
 //Type data Text
@@ -42,11 +47,11 @@ func (t Text) Greet() {
 }
 
 //Implentation Byer interface for Text
-func (t Text) Byer() {
+func (t Text) Bye() {
 	fmt.Printf("\nChau soy %s", t)
 }
 
-func GreetAll(gs ...Greeter) {
+/* func GreetAll(gs ...Greeter) {
 	for _, g := range gs {
 		g.Greet()
 		fmt.Printf("\t Valor: %v, Tipo: %T\n ", g, g)
@@ -57,6 +62,13 @@ func ByerAll(bs ...Byer) {
 		b.Bye()
 		fmt.Printf("\t Valor: %v, Tipo: %T\n ", b, b)
 	}
+} */
+
+func All(gbs ...GetterByer) {
+	for _, gb := range gbs {
+		gb.Greet()
+		gb.Bye()
+	}
 }
 
 func main() {
@@ -65,6 +77,7 @@ func main() {
 	g.Greet()
 	t.Greet() */
 	p := Person{Name: "Emanuel"}
-	var t Text = "Juana"
-	GreetAll(p, t)
+	/* var t Text = "Juana"
+	All(p, t) */
+	fmt.Println(p)
 }
